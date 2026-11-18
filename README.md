@@ -4,12 +4,15 @@
   <img src="logo.png" alt="کورد لینوکس (قەزوان)" width="320">
 </p>
 
-<h1 align="center">لێدەری مۆسیقا</h1>
+<h1 align="center">میوزیک پلەیەر </h1>
 
 <p align="center">
-  لێدەری مۆسیقای PWA بە زمانی کوردی سۆرانی — بۆ ئایفۆن و  ئەندرۆید و هەموو ئامێرەکان<br>
+  میوزیک پلەیەر PWA بە زمانی کوردی سۆرانی — بۆ ئایفۆن و  ئەندرۆید و هەموو ئامێرەکان<br>
   دیزاین: <b>کورد لینوکس <sub>(قەزوان)</sub></b> · <a href="https://www.linux.krd">www.linux.krd</a>
 </p>
+
+![](https://github.com/linux-krd/music-pwa/blob/main/Screen.png)
+
 
 ---
 
