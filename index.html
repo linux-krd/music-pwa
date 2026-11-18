@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ckb" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#131d36">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="مۆسیقا">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>لێدەری مۆسیقا</title>
+<script>
+try{var t=localStorage.getItem('mp_theme');t=t?JSON.parse(t):(matchMedia('(prefers-color-scheme: dark)').matches?'night':'day');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='night';}
+</script>
+<link rel="preload" href="fonts/Vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="19" cy="12" r="1.8" fill="currentColor"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6a.6.6 0 0 0 .9.5l11-6.8a.6.6 0 0 0 0-1l-11-6.8a.6.6 0 0 0-.9.5z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4.4" height="15" rx="1.2" fill="currentColor"/><rect x="13.6" y="4.5" width="4.4" height="15" rx="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M11.5 6.5v11a.5.5 0 0 1-.8.4l-7.4-5.5a.5.5 0 0 1 0-.8l7.4-5.5a.5.5 0 0 1 .8.4zM21 6.5v11a.5.5 0 0 1-.8.4l-7.4-5.5a.5.5 0 0 1 0-.8l7.4-5.5a.5.5 0 0 1 .8.4z" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M12.5 6.5v11a.5.5 0 0 0 .8.4l7.4-5.5a.5.5 0 0 0 0-.8l-7.4-5.5a.5.5 0 0 0-.8.4zM3 6.5v11a.5.5 0 0 0 .8.4l7.4-5.5a.5.5 0 0 0 0-.8L3.8 6.1a.5.5 0 0 0-.8.4z" fill="currentColor" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-9.4-10A5 5 0 0 1 12 6.8a5 5 0 0 1 9.4 3.7c-1.4 5.1-9.4 10-9.4 10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heartf" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-9.4-10A5 5 0 0 1 12 6.8a5 5 0 0 1 9.4 3.7c-1.4 5.1-9.4 10-9.4 10z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 7h3.5c5 0 6 10 11 10H21M3 17h3.5c1.6 0 2.8-.7 3.8-1.7M13.7 8.7C14.7 7.7 15.9 7 17.5 7H21M18.5 4l2.5 3-2.5 3M18.5 14l2.5 3-2.5 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 2.5l3.5 3.5L17 9.5M3.5 11V10a4 4 0 0 1 4-4h13M7 21.5L3.5 18 7 14.5M20.5 13v1a4 4 0 0 1-4 4h-13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-repeat1" viewBox="0 0 24 24"><path d="M17 2.5l3.5 3.5L17 9.5M3.5 11V10a4 4 0 0 1 4-4h13M7 21.5L3.5 18 7 14.5M20.5 13v1a4 4 0 0 1-4 4h-13M11 10.5l1.6-1v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-addlist" viewBox="0 0 24 24"><path d="M3.5 6h12M3.5 11.5h8M3.5 17h8M18 12v8M14 16h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7.5A1.5 1.5 0 0 1 4.5 6h4.2l2 2.2h8.8A1.5 1.5 0 0 1 21 9.7v8.8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18.5" cy="17.5" r="2.2" fill="currentColor"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.6A8.4 8.4 0 1 1 9.4 4a6.9 6.9 0 0 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10.500 4.500 20 4.500 20 14 15 19 5 19zM5 19l8-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="16" r="2.8" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-rows" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13" y="13" width="7.5" height="7.5" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-frame" viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="17" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3 12h18M12 3c3 3.2 3 14.800 0 18M12 3c-3 3.200-3 14.800 0 18" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21 4L3 11.200l5.600 2 2 5.800 3-3.600 4.600 3.400z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.600 13.200L21 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===== Library ===== -->
+<section id="library" class="screen">
+  <header class="top">
+    <button id="themeBtn" class="ib" aria-label="ڕووکار"></button>
+    <h1 id="libTitle">مۆسیقاکەم</h1>
+    <button id="btnAdd" class="ib" aria-label="زیادکردنی مۆسیقا"><svg class="i"><use href="#i-plus"/></svg></button>
+  </header>
+  <div class="search"><input id="q" type="search" placeholder="گەڕان بەدوای گۆرانی، هونەرمەند، بوخچە…"></div>
+  <nav id="tabs"><i class="ind"></i>
+    <button data-tab="home" class="on"><svg class="i"><use href="#i-home"/></svg><span>ماڵەوە</span></button>
+    <button data-tab="all"><svg class="i"><use href="#i-note"/></svg><span>هەموو</span></button>
+    <button data-tab="folders"><svg class="i"><use href="#i-folder"/></svg><span>بوخچە</span></button>
+    <button data-tab="lists"><svg class="i"><use href="#i-list"/></svg><span>لیست</span></button>
+    <button data-tab="fav"><svg class="i"><use href="#i-heart"/></svg><span>دڵخواز</span></button>
+  </nav>
+  <main id="view"></main>
+</section>
+
+<!-- ===== Mini player ===== -->
+<div id="mini" class="hidden">
+  <div class="mini-row">
+    <div id="miniCover"></div>
+    <div class="mini-info" id="miniInfo">
+      <div id="miniTitle">—</div>
+      <small id="miniArtist"></small>
+    </div>
+    <div class="mbtns">
+      <button id="miniPrev" class="gb" aria-label="پێشوو"><svg class="i"><use href="#i-prev"/></svg></button>
+      <button id="miniPlay" class="pbtn sm" aria-label="لێدان"><svg class="i"><use href="#i-play"/></svg></button>
+      <button id="miniNext" class="gb" aria-label="دواتر"><svg class="i"><use href="#i-next"/></svg></button>
+    </div>
+  </div>
+  <input id="miniSeek" class="seek" type="range" min="0" max="1000" value="0" dir="ltr" aria-label="شوێنی لێدان">
+</div>
+
+<!-- ===== Full player ===== -->
+<section id="full" class="hidden">
+  <div class="band">
+    <button id="closeFull" class="ib" aria-label="داخستن"><svg class="i"><use href="#i-down"/></svg></button>
+    <div class="src"><small>لێدان لە</small><b id="fSrc">کتێبخانە</b></div>
+    <button id="fMore" class="ib" aria-label="زیاتر"><svg class="i"><use href="#i-more"/></svg></button>
+  </div>
+  <div class="psheet">
+    <div id="fCover" class="cover-wrap"></div>
+    <h2 id="fTitle">—</h2>
+    <div class="p-sub" id="fArtist"></div>
+    <div class="seekrow" dir="ltr">
+      <span id="tCur">٠:٠٠</span>
+      <input id="seek" class="seek" type="range" min="0" max="1000" value="0" aria-label="شوێنی لێدان">
+      <span id="tDur">٠:٠٠</span>
+    </div>
+    <div class="ctrl">
+      <button id="fPrev" class="gb big" aria-label="پێشوو"><svg class="i"><use href="#i-prev"/></svg></button>
+      <button id="fPlay" class="pbtn" aria-label="لێدان"><svg class="i"><use href="#i-play"/></svg></button>
+      <button id="fNext" class="gb big" aria-label="دواتر"><svg class="i"><use href="#i-next"/></svg></button>
+    </div>
+    <div class="p-bot">
+      <button id="btnShuffle" aria-label="هەڕەمەکی"><svg class="i"><use href="#i-shuffle"/></svg></button>
+      <button id="btnRepeat" aria-label="دووبارەکردنەوە"><svg class="i"><use href="#i-repeat"/></svg></button>
+      <button id="fFav" aria-label="دڵخواز"><svg class="i"><use href="#i-heart"/></svg></button>
+      <button id="fAddList" aria-label="زیادکردن بۆ لیست"><svg class="i"><use href="#i-addlist"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<div id="sheet" class="hidden"><div class="sheet-box" id="sheetBox"></div></div>
+
+<input id="fileInput" type="file" accept="audio/*,.mp3,.m4a,.aac,.wav,.flac,.ogg" multiple hidden>
+<input id="dirInput" type="file" webkitdirectory directory multiple hidden>
+<audio id="audio" preload="metadata"></audio>
+<div id="toast"></div>
+
+<div id="splash">
+  <div class="logo" role="img" aria-label="کورد لینوکس (قەزوان)"></div>
+  <div class="sp-lab">دیزاینەر</div>
+  <div class="sp-name">کورد لینوکس <small>(قەزوان)</small></div>
+  <div class="sp-links">
+    <a href="https://www.linux.krd" target="_blank" rel="noopener"><svg class="i"><use href="#i-globe"/></svg>www.linux.krd</a>
+  </div>
+  <button class="sp-enter" id="spEnter">چوونەژوورەوە</button>
+  <div class="sp-prog"><i></i></div>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
